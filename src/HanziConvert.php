@@ -27,7 +27,9 @@ class HanziConvert
         }
 
         //初始化字库
-        self::initConvert($isSc2tc);
+        if (!self::$hanziDict || !self::$hanziReverseDict) {
+            self::initConvert($isSc2tc);
+        }
 
         //开始处理
         $strArr = preg_split('/(?<!^)(?!$)/u', $str);//将字符串转成数组
